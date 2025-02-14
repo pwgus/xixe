@@ -1,14 +1,12 @@
 extends Node
 
+var _type: int
+var _demand: int
+var _offer: int
+var _price: float
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	var type: int
-	var demand: int
-	var offer: int
-	var price: float
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _init(ctype: int = 0, cdemand: int = 0, coffer: int = 0, cprice: float = 0) -> void:
+	_type = ctype
+	_demand = cdemand
+	_offer = coffer
+	_price = cprice

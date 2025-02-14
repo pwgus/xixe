@@ -1,14 +1,24 @@
 extends Node
 
+var _group_id: int
+var _amount: int
+var _income: float
+var _consumption: Array
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	var group_id: int
-	var amount: int
-	var income: float
-	var consumption: Array
+func _init(cgroup_id: int = Global.getCreatedPopGroups(), camount: int = 0, cincome: int = 0, cconsumption: Array = []) -> void:
+	_group_id = cgroup_id
+	_amount = camount
+	_income = cincome
+	_consumption = cconsumption
 
+func getGroupId() -> int:
+	return _group_id
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func getAmount() -> int:
+	return _amount
+
+func getIncome() -> float:
+	return _income
+
+func getConsumption() -> Array:
+	return _consumption
