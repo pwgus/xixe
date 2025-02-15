@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bea6tdiuc6prq"]
-
-[ext_resource type="Script" path="res://src/container.gd" id="1_nh47l"]
+[gd_scene format=3 uid="uid://7x5wsah3vwjd"]
 
 [node name="main" type="Control"]
 layout_mode = 3
@@ -10,8 +8,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Container" type="Container" parent="."]
+[node name="logcontainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_nh47l")
+
+[node name="logs" type="RichTextLabel" parent="logcontainer"]
+layout_mode = 2
+
+[node name="datacontainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="gdp" type="RichTextLabel" parent="datacontainer"]
+layout_mode = 2
+
+[node name="population" type="RichTextLabel" parent="datacontainer"]
+layout_mode = 2

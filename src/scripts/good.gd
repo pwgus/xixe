@@ -17,3 +17,15 @@ func _init(ctype: int = 0, cdemand: int = 0, coffer: int = 0, cprice: float = 0)
 	_demand = cdemand
 	_offer = coffer
 	_price = cprice
+
+func getType() -> int:
+	return _type
+
+func getDemand() -> int:
+	return _demand
+
+func getOffer() -> int:
+	return _offer
+
+func getPrice() -> float:
+	return _price

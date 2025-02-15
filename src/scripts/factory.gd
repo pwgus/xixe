@@ -45,6 +45,12 @@ func getIncome() -> float:
 func getOutcome() -> float:
 	return _outcome
 
+func getBalance() -> float:
+	return _balance
+
+func getDividends() -> float:
+	return _dividends
+
 func getInput() -> Dictionary:
 	return _input
 

@@ -8,9 +8,9 @@ GLOBAL
 
 var _total_population: int # Total population in the country
 var _gdp: float # Gross Domestic Product (duh)
-var _growth_rate: float # Rate at which pops do increase (applied to each pop group homogeneally)
-var _mortality_rate: float # Rate at which pops do decrease (also applied homogeneally)
-var _created_pop_groups: int = 0 # ID counter of amount of pop groups created
+var _growth_rate: float # Rate at which pops do increase (applied to each pop group homogeneously)
+var _mortality_rate: float # Rate at which pops do decrease (also applied homogeneously)
+var _created_pop_groups: int = 0 # ID counter of the amount of pop groups created
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
