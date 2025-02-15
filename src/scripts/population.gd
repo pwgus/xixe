@@ -10,9 +10,9 @@ It's currently made this way in order to optimize as much as possible the data s
 var _group_id: int # Population Group's id. It MUST NOT BE MODIFIED ONCE STATED FOR AN OBJECT
 var _amount: int # Amount of people belonging to said group
 var _income: float # Income PER CAPITA of the group
-var _consumption: Array # Consumption PER CAPITA of the group
+var _consumption: Dictionary # Consumption PER CAPITA of the group
 
-func _init(cgroup_id: int = Global.getCreatedPopGroups(), camount: int = 0, cincome: int = 0, cconsumption: Array = []) -> void:
+func _init(cgroup_id: int = Global.getCreatedPopGroups(), camount: int = 0, cincome: float = 0, cconsumption: Dictionary = {}) -> void:
 	_group_id = cgroup_id
 	_amount = camount
 	_income = cincome
@@ -27,5 +27,5 @@ func getAmount() -> int:
 func getIncome() -> float:
 	return _income
 
-func getConsumption() -> Array:
+func getConsumption() -> Dictionary:
 	return _consumption

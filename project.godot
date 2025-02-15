@@ -21,3 +21,8 @@ Global="*res://src/scripts/global.gd"
 Factory="*res://src/scripts/factory.gd"
 Good="*res://src/scripts/good.gd"
 Population="*res://src/scripts/population.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
