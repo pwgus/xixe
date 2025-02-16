@@ -6,15 +6,18 @@ GLOBAL
 "Main" .gd file that has most of the variables needed to be used by other nodes.
 """
 
-var _total_population: int # Total population in the country
+var _total_population: int = 1000000# Total population in the country
 var _gdp: float # Gross Domestic Product (duh)
 var _growth_rate: float # Rate at which pops do increase (applied to each pop group homogeneously)
 var _mortality_rate: float # Rate at which pops do decrease (also applied homogeneously)
 var _created_pop_groups: int = 0 # ID counter of the amount of pop groups created
+var _opened_factories: Array # Array with all opened factories
+var _existing_pop_groups: Array # Array with all existing pop groups
+var _current_turn: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_total_population = 1000000
+	_total_population
 
 # Enum with all the recognized types of factories
 enum typeFactory {
@@ -64,3 +67,9 @@ func getCreatedPopGroups() -> float:
 # As could be expected, _created_pop_groups must be increased by one each time. Therefore there's no set method.
 func increaseCreatedPopGroups() -> void:
 	_created_pop_groups += 1
+
+func nextTurn() -> void:
+	_current_turn += 1
+	
+func getCurrentTurn() -> int:
+	return _current_turn

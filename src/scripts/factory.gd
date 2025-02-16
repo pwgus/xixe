@@ -1,5 +1,7 @@
 extends Node
 
+class_name Factory
+
 """
 FACTORY
 
@@ -10,6 +12,7 @@ Inputs and outputs are directly related to the amount of workers working in it a
 
 var _owners: Population # Pop group owning this factory
 var _workers: Population # Pop group working for this factory
+var _factory_id: int # Factory's ID
 var _max_workers: int # How big can be the pop group associated to this factory's workers
 var _type: int # Type of factory
 var _income: float # Financial income of the factory
@@ -19,9 +22,15 @@ var _dividends: float # Dividends managed
 var _input: Dictionary # Amount of each good needed
 var _output: Dictionary # Amount of each good produced
 
-func _init(cowners: Population = Population.new(), cworkers: Population = Population.new(), ctype:int = 0, cincome: float = 0, coutcome: float = 0, cbalance: float = 0, cdividends: float = 0, cinput: Dictionary = {}, coutput: Dictionary = {}) -> void:
+func _init(cowners: Population = null, cworkers: Population = null, cfactory_id: int = 0, cmax_workers: int = 0, ctype:int = 0, cincome: float = 0, coutcome: float = 0, cbalance: float = 0, cdividends: float = 0, cinput: Dictionary = {}, coutput: Dictionary = {}) -> void:
+	if cowners == null:
+		cowners = Population.new()
 	_owners = cowners
+	if cworkers == null:
+		cworkers = Population.new()
 	_workers = cworkers
+	_factory_id = cfactory_id
+	_max_workers = cmax_workers
 	_type = ctype
 	_income = cincome
 	_outcome = coutcome
@@ -56,3 +65,9 @@ func getInput() -> Dictionary:
 
 func getOutput() -> Dictionary:
 	return _output
+
+func getFactoryId() -> int:
+	return _factory_id
+
+func getMaxWorkers() -> int:
+	return _max_workers
