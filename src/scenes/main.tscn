@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dk1ffongj6fn4"]
 
 [ext_resource type="Script" path="res://src/scripts/game.gd" id="1_c6oq7"]
-[ext_resource type="Script" path="res://src/scenes/turn_label.gd" id="2_je34w"]
+[ext_resource type="Script" path="res://src/scripts/turn_label.gd" id="2_je34w"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
