@@ -11,13 +11,14 @@ var _gdp: float # Gross Domestic Product (duh)
 var _growth_rate: float # Rate at which pops do increase (applied to each pop group homogeneously)
 var _mortality_rate: float # Rate at which pops do decrease (also applied homogeneously)
 var _created_pop_groups: int = 0 # ID counter of the amount of pop groups created
+var _created_factories: int = 0 # ID Counter of the amount of factories created
 var _opened_factories: Array = [] # Array with all opened factories
 var _existing_pop_groups: Array = [] # Array with all existing pop groups
 var _current_turn: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_total_population
+	_opened_factories.append(null)
 
 # Enum with all the recognized types of factories
 enum typeFactory {
@@ -61,8 +62,11 @@ func getGrowthRate() -> float:
 func getMortalityRate() -> float:
 	return _mortality_rate
 
-func getCreatedPopGroups() -> float:
+func getCreatedPopGroups() -> int:
 	return _created_pop_groups
+
+func getCreatedFactories() -> int:
+	return _created_factories
 
 func getFactoryList() -> Array:
 	return _opened_factories
@@ -80,6 +84,9 @@ func addPopGroup(npg: Population):
 func increaseCreatedPopGroups() -> void:
 	_created_pop_groups += 1
 
+func increaseCreatedFactories() -> void:
+	_created_factories += 1
+
 """
 NEXT TURN ALGORITHM
 
@@ -88,7 +95,6 @@ For each turn, there's a list of changes in data to do (duh). As for now, these 
 		1.1. Increase population by increasing constant
 	2. For each pop group:
 		2.1. Calculate consume
-		2.2. Make effective consume
 	3. For each good:
 		3.1. Calculate demand
 		3.2. Calculate price
@@ -103,6 +109,7 @@ For each turn, there's a list of changes in data to do (duh). As for now, these 
 	6. Increase turn
 """
 func nextTurn() -> void:
+	
 	for f in _opened_factories:
 		
 		pass

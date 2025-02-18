@@ -22,14 +22,15 @@ var _dividends: float # Dividends managed
 var _input: Dictionary # Amount of each good needed
 var _output: Dictionary # Amount of each good produced
 
-func _init(cowners: Population = null, cworkers: Population = null, cfactory_id: int = 0, cmax_workers: int = 0, ctype:int = 0, cincome: float = 0, coutcome: float = 0, cbalance: float = 0, cdividends: float = 0, cinput: Dictionary = {}, coutput: Dictionary = {}) -> void:
+func _init(cowners: Population = null, cworkers: Population = null, cmax_workers: int = 0, ctype:int = 0, cincome: float = 0, coutcome: float = 0, cbalance: float = 0, cdividends: float = 0, cinput: Dictionary = {}, coutput: Dictionary = {}) -> void:
 	if cowners == null:
 		cowners = Population.new()
 	_owners = cowners
 	if cworkers == null:
 		cworkers = Population.new()
 	_workers = cworkers
-	_factory_id = cfactory_id
+	_factory_id = Global.getCreatedFactories()
+	Global.increaseCreatedFactories()
 	_max_workers = cmax_workers
 	_type = ctype
 	_income = cincome
