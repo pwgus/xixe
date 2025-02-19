@@ -10,15 +10,22 @@ var _total_population: int = 1000000 # Total population in the country
 var _gdp: float # Gross Domestic Product (duh)
 var _growth_rate: float # Rate at which pops do increase (applied to each pop group homogeneously)
 var _mortality_rate: float # Rate at which pops do decrease (also applied homogeneously)
-var _created_pop_groups: int = 0 # ID counter of the amount of pop groups created
-var _created_factories: int = 0 # ID Counter of the amount of factories created
+var _created_pop_groups: int = 1 # ID counter of the amount of pop groups created
+var _created_factories: int = 1 # ID Counter of the amount of factories created
 var _opened_factories: Array = [] # Array with all opened factories
 var _existing_pop_groups: Array = [] # Array with all existing pop groups
 var _current_turn: int = 1
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_opened_factories.append(null)
+	# We create a first pop group composed by all the population. They're right now unemployed pops.
+	var up: Population = Population.new(_created_pop_groups, 1000000, 0)
+	increaseCreatedPopGroups()
+	addPopGroup(up)
+	
+	# Also create the factory 0, reserved for the unemployed
+	var nf: Factory = Factory.new(null, up, getTotalPop())
+	_opened_factories.append(nf)
+	addFactory(nf)
 
 # Enum with all the recognized types of factories
 enum typeFactory {
@@ -36,6 +43,14 @@ enum typeGood {
 	MINETHING,
 	CONSUMERGOODS,
 	SERVICES
+}
+
+# Enum with all the recognized types of pop groups
+enum typePopGroup {
+	NONE,
+	OWNER,
+	WORKER,
+	HOMEOWNER # To be added in the future
 }
 
 # Getters and setters of the variables
