@@ -14,7 +14,9 @@ var _created_pop_groups: int = 1 # ID counter of the amount of pop groups create
 var _created_factories: int = 1 # ID Counter of the amount of factories created
 var _opened_factories: Array = [] # Array with all opened factories
 var _existing_pop_groups: Array = [] # Array with all existing pop groups
-var _current_turn: int = 1
+var _current_turn: int = 1 # Turn counter (why am I even writing this)
+var _pf_associations : Dictionary = {} # Associations of pop groups to factories. Keys are pop groups, values the factories they're associated with (if any).
+var _good_array: Array = []
 
 func _ready() -> void:
 	# We create a first pop group composed by all the population. They're right now unemployed pops.
@@ -22,10 +24,6 @@ func _ready() -> void:
 	increaseCreatedPopGroups()
 	addPopGroup(up)
 	
-	# Also create the factory 0, reserved for the unemployed
-	var nf: Factory = Factory.new(null, up, getTotalPop())
-	_opened_factories.append(nf)
-	addFactory(nf)
 
 # Enum with all the recognized types of factories
 enum typeFactory {
@@ -102,6 +100,21 @@ func increaseCreatedPopGroups() -> void:
 func increaseCreatedFactories() -> void:
 	_created_factories += 1
 
+func getFactoryOfPG(pg: Population) -> Array:
+	return _pf_associations.get(pg)
+
+func setFactoryOfPG(pg: Population, f: Factory) -> void:
+	if (_pf_associations.values().size() == 1):
+		push_warning("There's already a factory associated to this pg!")
+	else:
+		_pf_associations.get_or_add(pg, f)
+
+func deleteFactoryOfPG(pg: Population) -> void:
+	if (_pf_associations.values().size() == 0):
+		push_warning("There's no factory associated to this pg!")
+	else:
+		_pf_associations.erase(pg)
+
 """
 NEXT TURN ALGORITHM
 
@@ -124,10 +137,14 @@ For each turn, there's a list of changes in data to do (duh). As for now, these 
 	6. Increase turn
 """
 func nextTurn() -> void:
+	var otp: int = _total_population # Old total pop
+	_total_population *= (1 + _growth_rate - _mortality_rate)
+	_existing_pop_groups[0].setAmount(otp * _growth_rate * _mortality_rate) # All new pops are babies. Therefore, they're unemployed (it doesn't work like that and must be changed in the future).
 	
-	for f in _opened_factories:
-		
-		pass
+	for g in _good_array:
+		for pg in _existing_pop_groups:
+			# TODO: Finish this nightmare
+			pass
 	_current_turn += 1
 	
 func getCurrentTurn() -> int:

@@ -11,7 +11,6 @@ It's currently made this way in order to optimize as much as possible the data s
 
 var _group_id: int # Population Group's id. It MUST NOT BE MODIFIED ONCE STATED FOR AN OBJECT
 var _type: int # Type of the pop group
-var _factory_associated: int # Associated factory's ID. By default it's 0.
 var _amount: int # Amount of people belonging to said group
 var _income: float # Income PER CAPITA of the group
 var _consumption: Dictionary # Consumption PER CAPITA of the group
@@ -28,6 +27,9 @@ func getGroupId() -> int:
 
 func getAmount() -> int:
 	return _amount
+
+func setAmount(na: int) -> void:
+	_amount = na
 
 func getIncome() -> float:
 	return _income

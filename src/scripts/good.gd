@@ -23,8 +23,22 @@ func _init(ctype: int = 0, cdemand: int = 0, coffer: int = 0, cprice: float = 0)
 func getType() -> int:
 	return _type
 
+func setType(t: int) -> void:
+	if (t not in Global.typeGood):
+		push_warning("There's no such type of good")
+	elif (_type != 0):
+		push_warning("This good already has a type that's not NONE!")
+	else:
+		_type = t
+
 func getDemand() -> int:
 	return _demand
+
+func setDemand(nd: int) -> void:
+	if (nd < 0):
+		push_warning("Demand is below zero?? HOW DID YOU DO THAT??!!")
+	else:
+		_demand = nd
 
 func getOffer() -> int:
 	return _offer
