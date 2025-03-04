@@ -1,4 +1,4 @@
-### XIXe: the simplest economic(al) simulation game
+# XIXe: the simplest economic(al) simulation game
 
 ## About the game
 
@@ -8,4 +8,4 @@ Not to be expected as for now to be anything big, just a side project I made out
 
 Also,
 
-# it's said /ˌnaɪnˈtiːnθeɪ/. Not /ˈksɪˈksɛ/, not /ˈʝiˈʝe/ (also not /ˈsiˈse/).
+### it's said /ˌnaɪnˈtiːnθeɪ/. Not /ˈksɪˈksɛ/, not /ˈʝiˈʝe/ (also not /ˈsiˈse/).
